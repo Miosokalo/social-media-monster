@@ -6,7 +6,7 @@ import { env } from "@/env";
 import { log } from "@/lib/logger";
 
 /** Aggregates published posts per workspace into one snapshot row per run. */
-export async function POST(_req: Request) {
+export async function POST(req: Request) {
   const secret = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "");
   if (!env.CRON_SECRET || secret !== env.CRON_SECRET) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
