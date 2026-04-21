@@ -1,0 +1,10 @@
+# Beispiel: Control Plane hinter Caddy mit Basic Auth.
+# Passwort-Hash: caddy hash-password
+# Upstream: Port aus docker-compose (z. B. 3040 -> localhost)
+
+control.example.com {
+	basicauth {
+		admin $2a$14$hashed_password_here
+	}
+	reverse_proxy 127.0.0.1:3040
+}

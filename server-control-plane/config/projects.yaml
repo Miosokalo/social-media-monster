@@ -1,0 +1,14 @@
+# Lokale Demo-Konfiguration (example.com — nur zum Starten der UI).
+# Ersetze durch echte Projekte.
+
+projects:
+  - id: demo-app
+    displayName: Demo App
+    git:
+      provider: github
+      owner: octocat
+      repo: Hello-World
+      branch: master
+    recommendedStepsPath: README.md
+    urls:
+      public: https://example.com

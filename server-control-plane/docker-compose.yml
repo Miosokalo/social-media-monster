@@ -1,0 +1,20 @@
+services:
+  control-plane:
+    build: .
+    ports:
+      - "${CONTROL_PLANE_PORT:-3040}:3000"
+    environment:
+      PROJECTS_CONFIG_PATH: /app/config/projects.yaml
+      CONTROL_PLANE_DATA_DIR: /app/data
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      TICKET_WEBHOOK_SECRET: ${TICKET_WEBHOOK_SECRET:-}
+      DEPLOY_WEBHOOK_SECRET: ${DEPLOY_WEBHOOK_SECRET:-}
+      CONTROL_PLANE_EXPOSE_HOST_METRICS: ${CONTROL_PLANE_EXPOSE_HOST_METRICS:-false}
+      SYSTEM_DISK_PATHS: ${SYSTEM_DISK_PATHS:-/}
+    volumes:
+      - ./config/projects.yaml:/app/config/projects.yaml:ro
+      - control_plane_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  control_plane_data:
