@@ -1,9 +1,0 @@
-node_modules
-.next
-.git
-.gitignore
-# Keep docs/**/*.md for runtime doc pages
-.env
-.env.*
-data
-npm-debug.log*
